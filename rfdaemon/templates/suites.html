@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+{% block body %}
+	<table class="tasks">
+		<tr>
+			<th> Suite name </th>
+			<th> Tags </th>
+			<th> Documentation </th>
+		</tr>
+		{% for suite in suites %}
+		<tr>
+			<td> {{ suite }} </td>
+			<td> blah blah blah </td>
+			<td> no Comments </td>
+		</tr>
+		{% endfor %}
+	</table>
+{% endblock %}

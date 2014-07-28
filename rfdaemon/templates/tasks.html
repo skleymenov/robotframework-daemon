@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+{% block body %}
+	<table class="tasks">
+		<tr>
+			<th> Suite name </th>
+			<th> Status </th>
+			<th> Pid </th>
+			<th> Start time </th>
+			<th> End time </th>
+			<th> Duration </th>
+		</tr>
+		{% for task in tasks %}
+		<tr>
+			<td> {{ task.suite }} </td>
+			<td> {{ task.status }} </td>
+			<td> {{ task.pid }} </td>
+			<td> {{ task.start_time }} </td>
+			<td> {{ task.end_time }} </td>
+			<td> {{ task.duration }} </td>
+		</tr>
+		{% endfor %}
+	</table>
+{% endblock %}
