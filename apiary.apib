@@ -9,24 +9,21 @@ rfdaemon API is a siimple servie to queue, run and ispect results of RobotFramew
 + Response 200 (application/json)
 
         [{
-          "id": 1, "title": "Jogging in park"
+          "suite": "v210 inventory check", "tags": [ "inventory", "BIOS", "BMC", "branding" ], "documentation" : "Performs a basic inventory check of a v210 node"
         }, {
-          "id": 2, "title": "Pick-up posters from post-office"
+          "suite": "Ethernet bandwidth" , "tags": [ "ethernet", "benchmark"], "documentation" : "Do a simple bandwidth benchmark of the Ethernet port"
         }]
 
-## Suite [/suites/{id}]
-A single Note object with all its details
+## Suite [/suites/{name}]
+A single Suite object with all its details
 
 + Parameters
-    + id (required, number, `1`) ... Numeric `id` of the Note to perform action with. Has example value.
+    + name (required, sting) ... String `name` of the Suite to perform action with.
 
 ### Retrieve a Suite [GET]
 + Response 200 (application/json)
 
-    + Header
+        {"suite": "v210 inventory check", "tags": [ "inventory", "BIOS", "BMC", "branding" ], "documentation" : "Performs a basic inventory check of a v210 node"}
 
-            X-My-Header: The Value
++ Response 200 (text/html)
 
-    + Body
-
-            { "id": 2, "title": "Pick-up posters from post-office" }
