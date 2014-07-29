@@ -1,13 +1,11 @@
 FORMAT: 1A
 
-# rfdaemon
-rfdaemon API is a sipmle servie c.
+# rfdaemon API
+rfdaemon API is a siimple servie to queue, run and ispect results of RobotFramework suites remotely.
 
-# Group Notes
-Notes related resources of the **Notes API**
 
-## Notes Collection [/notes]
-### List all Notes [GET]
+## Suites Collection [/suites]
+### List all Suites [GET]
 + Response 200 (application/json)
 
         [{
@@ -16,22 +14,13 @@ Notes related resources of the **Notes API**
           "id": 2, "title": "Pick-up posters from post-office"
         }]
 
-### Create a Note [POST]
-+ Request (application/json)
-
-        { "title": "Buy cheese and bread for breakfast." }
-
-+ Response 201 (application/json)
-
-        { "id": 3, "title": "Buy cheese and bread for breakfast." }
-
-## Note [/notes/{id}]
+## Suite [/suites/{id}]
 A single Note object with all its details
 
 + Parameters
     + id (required, number, `1`) ... Numeric `id` of the Note to perform action with. Has example value.
 
-### Retrieve a Note [GET]
+### Retrieve a Suite [GET]
 + Response 200 (application/json)
 
     + Header
@@ -41,6 +30,3 @@ A single Note object with all its details
     + Body
 
             { "id": 2, "title": "Pick-up posters from post-office" }
-
-### Remove a Note [DELETE]
-+ Response 204
