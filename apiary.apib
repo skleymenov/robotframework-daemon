@@ -17,10 +17,10 @@ The common [HTTP Response Status Codes](https://github.com/for-GET/know-your-htt
 
 ### Typical Server Responses
 
-- 200 'OK' - The request was successful (some API calls may return 201 or 202 instead).
-- 201 'Created' - The request was successful and a resource was created.
-- 202 'Accepted' - The request was successful, but the processing has not been completed.
-- 204 'No Content' - The request was successful, but there is no representation to return (that is, the response is empty).
+- 200 `OK` - The request was successful (some API calls may return 201 or 202 instead).
+- 201 `Created` - The request was successful and a resource was created.
+- 202 `Accepted` - The request was successful, but the processing has not been completed.
+- 204 `No Content` - The request was successful, but there is no representation to return (that is, the response is empty).
 - 400 `Bad Request` - The request could not be understood or was missing required parameters.
 - 404 `Not Found` - Resource was not found.
 - 405 `Method Not Allowed` - Requested method is not supported for the specified resource.
@@ -35,32 +35,28 @@ This resource provides a very basic summary of the current service state.
 
 + Request
 
-	+ Headers
+    + Headers
 
-		Accept: application/json
+            Accept: application/json
 
 + Response 200 (application/json)
-	
-	+ Headers
-	
-		Content-Type: application/json
-	
-	+ Body
+    
+    + Body
 
-		{"rfdaemon":
-			{"version" : "1.0.0", "hostname" : "testnode1", "hostid" : "67c557c2790566efcee3f62c3cb5715e", "period" : "1406529548"}
-		}
+            {"rfdaemon":
+                {"version" : "1.0.0", "hostname" : "testnode1", "hostid" : "67c557c2790566efcee3f62c3cb5715e", "period" : "1406529548"}
+            }
 
 + Response 503
 
-	+ Headers
+    + Headers
 
-		Content-Type: application/json
+            Content-Type: application/json
 
-	+ Body
+    + Body
 
-		{"error":{"message":"Scheduled maintenance in progress. Please try again later."}}
-	
+            {"error":{"message":"Scheduled maintenance in progress. Please try again later."}}
+    
 # Group Suites 
 
 Suites are RobotFramework suite files registered by rfdaemon service.
@@ -72,46 +68,42 @@ A single Suite object with all its details
     + name (required, sting) ... String `name` of the Suite to perform action with.
 
 + Model (application/json)
-	Plain JSON representation of Suite Resource.
+        Plain JSON representation of Suite Resource.
 
-+ Body
+    + Body
 
-        {"suite": "v210 inventory check", "tags": [ "inventory", "BIOS", "BMC", "branding" ], "documentation" : "Performs a basic inventory check of a v210 node"}
+            {"suite": "v210 inventory check", "tags": [ "inventory", "BIOS", "BMC", "branding" ], "documentation" : "Performs a basic inventory check of a v210 node"}
 
 ### Retrieve a Suite [GET]
 + Response 200 (application/json)
 
-	[Suite][]
+    [Suite][]
 
 ## Suites Collection [/suites]
 Collection of all Suites.
 
 + Model (application/json)
-	
-	Plain JSON representation of Suites Collection Resource. Note the embedded Siutes resource are incomplete representation of the Suite in question. Use the indevidual Suite resource to retrieve its full representation.
+    
+    Plain JSON representation of Suites Collection Resource. Note the embedded Siutes resource are incomplete representation of the Suite in question. Use the indevidual Suite resource to retrieve its full representation.
 
-	+ Headers
-		
-		Content-Type: application-json
-	
-	+ Body
-		
-		{
-			"suites" :
-				[{
-					"suite": "v210 inventory check", "tags": [ "inventory", "BIOS", "BMC", "branding" ], "documentation" : "Performs a basic inventory check of a v210 node"
-        			}, {
-					"suite": "Ethernet bandwidth" , "tags": [ "Ethernet", "benchmark"], "documentation" : "Do a simple bandwidth benchmark of the Ethernev port"
-				}]
-			"total" : 2
-		}
+    + Body
+        
+            {
+                "suites" :
+                    [{
+                        "suite": "v210 inventory check", "tags": [ "inventory", "BIOS", "BMC", "branding" ], "documentation" : "Performs a basic inventory check of a v210 node"
+                        }, {
+                        "suite": "Ethernet bandwidth" , "tags": [ "Ethernet", "benchmark"], "documentation" : "Do a simple bandwidth benchmark of the Ethernev port"
+                    }]
+                "total" : 2
+            }
 
-		
+        
 ## List all Suites [GET]
 
 + Response 200 (application/json)
 
-	[Suite Collestion][]
+    [Suites Collection][]
 
 ## Suites collection version information [/suites/__version]
 ### Get current version details [GET]
@@ -133,10 +125,3 @@ Collection of all Suites.
                 "title" : "Documentation added"
             }
         }
-
-
-
-                
-
-
-            
