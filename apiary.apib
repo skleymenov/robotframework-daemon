@@ -1,7 +1,18 @@
 FORMAT: 1A
 
 # rfdaemon API
-rfdaemon API is a siimple servie to queue, run and ispect results of RobotFramework suites remotely.
+rfdaemon API is a simple service to queue, run and inspect results of [RobotFramework](http://robotfrawework.org) suites remotely.
+
+## Authentication
+Currently the rfdeamon API ver. 1.0 does not provide any authenticated access. All security issues should be solved separately.
+
+## Media Types
+Both JSON and HTML media-types are used to represent resources states and affordance.
+
+Requests with a message-body are using plain JSON to set or update resource states.
+
+## Error States
+The common [HTTP Response Status Codes](https://github.com/for-GET/know-your-http-well/blob/master/status-codes.md) are used.
 
 
 # Suites Collection [/suites]
@@ -11,7 +22,7 @@ rfdaemon API is a siimple servie to queue, run and ispect results of RobotFramew
         [{
           "suite": "v210 inventory check", "tags": [ "inventory", "BIOS", "BMC", "branding" ], "documentation" : "Performs a basic inventory check of a v210 node"
         }, {
-          "suite": "Ethernet bandwidth" , "tags": [ "ethernet", "benchmark"], "documentation" : "Do a simple bandwidth benchmark of the Ethernet port"
+          "suite": "Ethernet bandwidth" , "tags": [ "Ethernet", "benchmark"], "documentation" : "Do a simple bandwidth benchmark of the Ethernet port"
         }]
 + Response 200 (text/html)
 
@@ -33,7 +44,7 @@ rfdaemon API is a siimple servie to queue, run and ispect results of RobotFramew
                 </tr>
                 <tr>
                     <td> Ethernet bandwidth </td>
-                    <td> ethernet, benchmark </td>
+                    <td> Ethernets, benchmark </td>
                     <td> Do a simple bandwidth benchmark of the Ethernet port </td>
                 </tr>
             </body>
