@@ -7,48 +7,111 @@ rfdaemon API is a simple service to queue, run and inspect results of [RobotFram
 Currently the rfdeamon API ver. 1.0 does not provide any authenticated access. All security issues should be solved separately.
 
 ## Media Types
-Both JSON and HTML media-types are used to represent resources states and affordance.
+Both plain JSON and HTML media-types are used to represent resources states and affordance.
+HTML media-type of the resources states representaion are not documented here.
 
 Requests with a message-body are using plain JSON to set or update resource states.
 
 ## Error States
 The common [HTTP Response Status Codes](https://github.com/for-GET/know-your-http-well/blob/master/status-codes.md) are used.
 
+### Typical Server Responses
 
-# Suites Collection [/suites]
-## List all Suites [GET]
+- 200 'OK' - The request was successful (some API calls may return 201 or 202 instead).
+- 201 'Created' - The request was successful and a resource was created.
+- 202 'Accepted' - The request was successful, but the processing has not been completed.
+- 204 'No Content' - The request was successful, but there is no representation to return (that is, the response is empty).
+- 400 `Bad Request` - The request could not be understood or was missing required parameters.
+- 404 `Not Found` - Resource was not found.
+- 405 `Method Not Allowed` - Requested method is not supported for the specified resource.
+- 503 `Service Unavailable` - The service is temporary unavailable (e. g. scheduled maintenence). Try again later.
+
+# rfdaemon API Root [/]
+rfdaemon API entry point.
+
+This resource provides a very basic summary of the current service state.
+
+## Retrieve the Entry Point [GET]
+
++ Request
+
+	+ Headers
+
+		Accept: application/json
+
++ Response 200 (application/json)
+	
+	+ Headers
+	
+		Content-Type: application/json
+	
+	+ Body
+
+		{"rfdaemon":
+			{"version" : "1.0.0", "hostname" : "testnode1", "hostid" : "67c557c2790566efcee3f62c3cb5715e", "period" : "1406529548"}
+		}
+
++ Response 503
+
+	+ Headers
+
+		Content-Type: application/json
+
+	+ Body
+
+		{"error":{"message":"Scheduled maintenance in progress. Please try again later."}}
+	
+# Group Suites 
+
+Suites are RobotFramework suite files registered by rfdaemon service.
+
+## Suite [/suites/{name}]
+A single Suite object with all its details
+
++ Parameters
+    + name (required, sting) ... String `name` of the Suite to perform action with.
+
++ Model (application/json)
+	Plain JSON representation of Suite Resource.
+
++ Body
+
+        {"suite": "v210 inventory check", "tags": [ "inventory", "BIOS", "BMC", "branding" ], "documentation" : "Performs a basic inventory check of a v210 node"}
+
+### Retrieve a Suite [GET]
 + Response 200 (application/json)
 
-        [{
-          "suite": "v210 inventory check", "tags": [ "inventory", "BIOS", "BMC", "branding" ], "documentation" : "Performs a basic inventory check of a v210 node"
-        }, {
-          "suite": "Ethernet bandwidth" , "tags": [ "Ethernet", "benchmark"], "documentation" : "Do a simple bandwidth benchmark of the Ethernet port"
-        }]
-+ Response 200 (text/html)
+	[Suite][]
 
-        <!doctype html>
-            <head>
-                <title> System under the test </title>
-            </head>
-            <body>
-                <table>
-                <tr>
-                    <th> Suite name </th>
-                    <th> Tags </th>
-                    <th> Documentation </th>
-                </tr>
-                <tr>
-                    <td> v210 inventory check </td>
-                    <td> inventory, BIOS, BMC, branding </td>
-                    <td> Performs a basic inventory check of a v210 node </td>
-                </tr>
-                <tr>
-                    <td> Ethernet bandwidth </td>
-                    <td> Ethernets, benchmark </td>
-                    <td> Do a simple bandwidth benchmark of the Ethernet port </td>
-                </tr>
-            </body>
+## Suites Collection [/suites]
+Collection of all Suites.
 
++ Model (application/json)
+	
+	Plain JSON representation of Suites Collection Resource. Note the embedded Siutes resource are incomplete representation of the Suite in question. Use the indevidual Suite resource to retrieve its full representation.
+
+	+ Headers
+		
+		Content-Type: application-json
+	
+	+ Body
+		
+		{
+			"suites" :
+				[{
+					"suite": "v210 inventory check", "tags": [ "inventory", "BIOS", "BMC", "branding" ], "documentation" : "Performs a basic inventory check of a v210 node"
+        			}, {
+					"suite": "Ethernet bandwidth" , "tags": [ "Ethernet", "benchmark"], "documentation" : "Do a simple bandwidth benchmark of the Ethernev port"
+				}]
+			"total" : 2
+		}
+
+		
+## List all Suites [GET]
+
++ Response 200 (application/json)
+
+	[Suite Collestion][]
 
 ## Suites collection version information [/suites/__version]
 ### Get current version details [GET]
@@ -71,18 +134,6 @@ The common [HTTP Response Status Codes](https://github.com/for-GET/know-your-htt
             }
         }
 
-## Suite [/suites/{name}]
-A single Suite object with all its details
-
-+ Parameters
-    + name (required, sting) ... String `name` of the Suite to perform action with.
-
-### Retrieve a Suite [GET]
-+ Response 200 (application/json)
-
-        {"suite": "v210 inventory check", "tags": [ "inventory", "BIOS", "BMC", "branding" ], "documentation" : "Performs a basic inventory check of a v210 node"}
-
-+ Response 200 (text/html)
 
 
                 
