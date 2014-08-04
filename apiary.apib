@@ -43,8 +43,31 @@ This resource provides a very basic summary of the current service state.
     
     + Body
 
-            {"rfdaemon":
-                {"version" : "1.0.0", "hostname" : "testnode1", "hostid" : "67c557c2790566efcee3f62c3cb5715e", "period" : "1406529548"}
+            {"version" : "1.0.0", "hostname" : "testnode1", "hostid" : "67c557c2790566efcee3f62c3cb5715e", "period" : "1406529548"}
+
+    + Schema
+        
+            {
+                "type" : "object",
+                "required" : "false",
+                "properties" : {
+                        "version" : {
+                                "type" : ["string", "null"],
+                                "required" : true
+                        },
+                        "hostname" : {
+                                "type" : ["string", "null"],
+                                "required" : true
+                        },
+                        "hostid" : {
+                                "type" : ["strin", "null"],
+                                "required" : true
+                        },
+                        "period" : {
+                                "type" : "number",
+                                "required" : true
+                        }
+                }
             }
 
 + Response 503
