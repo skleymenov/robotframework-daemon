@@ -158,7 +158,8 @@ Collection of all Suites.
         }
 
 # Group Jobs
-Jobs resource represents RobotFramework Suite runs, that could be queued, in progress or finished, as well as results (logs and reports).
+Jobs resource represents RobotFramework Suite runs, that could be queued,
+in progress or finished, as well as results (logs and reports).
 
 ## Job [/jobs/{id}]
 
@@ -175,6 +176,8 @@ Each Job object has following attributes:
         * `in progress` -  the job was started;
         * `fail` - the job was completed with 'fail' result;
         * `pass` - the job was completed with 'pass' result;
+- `start_time` - Date and time when the job was started or `NA` if never.
+- `end_time` - Date and time when the job was completed or `NA` if never.
 
 
 + Parameters
@@ -187,8 +190,16 @@ Each Job object has following attributes:
 
     + Body 
 
-            { "job" : 
-                {"id":"123", "suite":"test_suite_1", "hostname" : "testnode1", "hostid" : "67c557c2790566efcee3f62c3cb5715e", "period" : "1406529548", "status" : "PASS"}
+            { "job" :
+                { "id" : "123",
+                  "suite" : "test_suite_1",
+                  "hostname" : "testnode1",
+                  "hostid" : "67c557c2790566efcee3f62c3cb5715e",
+                  "period" : "1406529548",
+                  "status" : "QUEUED",
+                  "start_time" : "NA",
+                  "end_time" : "NA"
+                }
             }
 
 
