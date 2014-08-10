@@ -163,6 +163,20 @@ Jobs resource represents RobotFramework Suite runs, that could be queued, in pro
 ## Job [/jobs/{id}]
 
 A single Job object with all its details.
+Each Job object has following attributes:
+
+- `id` - The Job object unique ID.
+- `hostid` - ID of the host this job was started or queued on.
+- `hostname` - Hostname of the machine this job was started or queued on.
+- `period` - Period ID (btime from /proc/stats in Linux)
+- `suite` - Name of the suite this job is based on.
+- `status` - Status of this job, one of the following values is accepted:
+
+	- `queued` - the job is registered in the queue;
+	- `in progress` -  the job was started;
+	- `fail` - the job was completed with 'fail' result;
+	- `pass` - the job was completed with 'pass' result;
+
 
 + Parameters
     
