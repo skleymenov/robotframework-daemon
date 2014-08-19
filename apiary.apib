@@ -207,3 +207,52 @@ Each Job object has following attributes:
 + Response 200 (application/json)
     
     [Job][]
+
+## Jobs Collection [/jobs{?status}]
+Collection of all Jobs.
+
+Jobs collection resource has the following attribute:
+
+- total
+
++ Model (application/json)
+
+        Plain JSON representation of Jobs Collection Resource.
+
+    + Body
+
+        {
+                "jobs" : [
+                    {
+                            "id" : 1,
+                            "suite" : "test_suite_1",
+                            "hostname" : "testnode1",
+                            "hostid" : "67c557c2790566efcee3f62c3cb5715e",
+                            "period" : "1406529548",
+                            "status" : "FAIL",
+                            "start_time" : "1406530000",
+                            "end_time" : "1406530023"
+                    },
+                    {
+                            "id" : "123",
+                            "suite" : "test_suite_1",
+                            "hostname" : "testnode1",
+                            "hostid" : "67c557c2790566efcee3f62c3cb5715e",
+                            "period" : "1406529548",
+                            "status" : "QUEUED",
+                            "start_time" : "NA",
+                            "end_time" : "NA"
+                    }],
+                 "total" : 2
+        }
+
+### List All Jobs [GET]
++ Parameters
+
+    + status (optional, string) ... Only jobs with status defined are returned.
+
+    
++ Response 200
+
+        [Jobs Collection][]
+
