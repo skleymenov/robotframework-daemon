@@ -139,12 +139,42 @@ Collection of all Suites.
 ### Get current version details [GET]
 + Response 200 (application/json)
 
-        { "841983b18323440e00dd5683beda21a2fd16bbdc" : 
-            { "author" : "Sergey Kleymenov <skleymenov@hurricaneclouds.co>",
-                "date" : "Thu, 29 May 2014 23:09:24 +0400",
-                "title" : "Documentation added"
+    + Body
+
+            { "841983b18323440e00dd5683beda21a2fd16bbdc" : 
+                { "author" : "Sergey Kleymenov <skleymenov@hurricaneclouds.co>",
+                    "date" : "Thu, 29 May 2014 23:09:24 +0400",
+                    "title" : "Documentation added"
+                }
             }
-        }
+
+    + Schema
+        
+            {
+                "type" : "object",
+                "required" : true,
+                "properties": {
+                        "author" : {
+                                "type" : "string",
+                                "required" : true,
+                                "description" : "Author of the last commit"
+                        },
+                        "date" : {
+                                "type": "string",
+                                "format" : "date-time",
+                                "description" : "Date and time of the last commit"
+                        },
+                        "title" : {
+                                "type" : "string",
+                                "required" : true,
+                                "description" : "The first line of the last commit message"
+                        }
+                }
+            }
+
+
+
+
 
 ### Update suite library [POST]
 + Response 200 (application/json)
@@ -256,3 +286,5 @@ Jobs collection resource has the following attribute:
 
     [Jobs Collection][]
 
+# Group Queue
+Jobs Queue
