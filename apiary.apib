@@ -141,35 +141,43 @@ Collection of all Suites.
 
     + Body
 
-            { "841983b18323440e00dd5683beda21a2fd16bbdc" : 
-                { "author" : "Sergey Kleymenov <skleymenov@hurricaneclouds.co>",
-                    "date" : "Thu, 29 May 2014 23:09:24 +0400",
-                    "title" : "Documentation added"
-                }
+            {
+                    "version" : {
+                            "hash" : "841983b18323440e00dd5683beda21a2fd16bbdc",
+                            "author" : "Sergey Kleymenov <skleymenov@hurricaneclouds.co>",
+                            "date" : "Thu, 29 May 2014 23:09:24 +0400",
+                            "title" : "Documentation added"
+                    }
             }
-
+                            
     + Schema
         
             {
-                "type" : "object",
-                "required" : true,
-                "properties": {
-                        "author" : {
-                                "type" : "string",
-                                "required" : true,
-                                "description" : "Author of the last commit"
-                        },
-                        "date" : {
-                                "type": "string",
-                                "format" : "date-time",
-                                "description" : "Date and time of the last commit"
-                        },
-                        "title" : {
-                                "type" : "string",
-                                "required" : true,
-                                "description" : "The first line of the last commit message"
-                        }
-                }
+                    "type" : "object",
+                    "required" : true,
+                    "properties": {
+                            "hash" : {
+                                    "type" : "string",
+                                    "required" : true,
+                                    "description" : "Hash code of the last commit"
+                            },
+                            "author" : {
+                                    "type" : "string",
+                                    "required" : true,
+                                    "description" : "Author of the last commit"
+                            },
+                            "date" : {
+                                    "type": "string",
+                                    "format" : "date-time",
+                                    "required" : true,
+                                    "description" : "Date and time of the last commit"
+                            },
+                            "title" : {
+                                    "type" : "string",
+                                    "required" : true,
+                                    "description" : "The first line of the last commit message"
+                            }
+                    }
             }
 
 
