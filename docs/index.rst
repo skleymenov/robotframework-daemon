@@ -7,16 +7,20 @@ Welcome to rfdaemon's documentation!
 ====================================
 
 Contents:
+---------
 
 .. toctree::
    :maxdepth: 2
    
    install
+   config
    user
+   design
+   hacks
 
 Overview
 ========
-The *rfdaemon* is a web service with the RESTful API, that provides feature full set of functions allowing to run, monitor the Robot Framework test suites and store and review corresponding results.
+The *rfdaemon* is a web service with the RESTful API, that provides a feature full set of functions allowing to run and monitor the Robot Framework test suites and store and review corresponding results.
 
 Contribute
 ==========
@@ -27,11 +31,4 @@ License
 =======
 
 The project is licensed under the `Apache 2.0 license <http://www.apache.org/licenses/LICENSE-2.0>`_.
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
 
