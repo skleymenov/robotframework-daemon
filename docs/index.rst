@@ -6,6 +6,10 @@
 Welcome to rfdaemon's documentation!
 ====================================
 
+Overview
+========
+The *rfdaemon* is a web service with the RESTful API, that provides a feature full set of functions allowing to run and monitor the Robot Framework test suites and store and review corresponding results.
+
 Contents:
 ---------
 
@@ -18,9 +22,6 @@ Contents:
    design
    hacks
 
-Overview
-========
-The *rfdaemon* is a web service with the RESTful API, that provides a feature full set of functions allowing to run and monitor the Robot Framework test suites and store and review corresponding results.
 
 Contribute
 ==========
