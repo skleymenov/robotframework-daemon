@@ -238,6 +238,23 @@ Each Job object has following attributes:
                 }
             }
 
+    + Schema
+    
+             { 
+             "$schema" : "http://json-schema.org/schema#",
+             "type" : "object",
+             "required" : false,
+             "properties" : {
+                "id" : {
+                    "type" : "number",
+                    "required" : true
+                    }
+                "suite" : {
+                    "type" : "string",
+                    "required" : true
+                }
+               }
+             }
 
 ### Retrieve a Job [GET]
 + Response 200 (application/json)
